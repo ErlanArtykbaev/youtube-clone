@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 
-import './css/Recomended.css'
-import Video from './Video'
+import './Recomended.css'
+import Video from '../../components/Video'
 import axios from 'axios'
 
 const Recomended = () => {
