@@ -40,11 +40,45 @@
   }
 }
 
+.sidebar{
+	flex: 0.13;
+  hr{
+    height: 1px;
+    border: 0;
+    background-color: lightgrey;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
 
+.sidebarRow{
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	transition: 0.3s;
+  .icon{
+    padding: 0 5px;
+    font-size: large !important;
+    color: #606060;
+  }
+  .title{
+    flex: 1;
+    padding: 0 5px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  &:hover{
+    background-color: lightgrey;
+    cursor: pointer;
+    .icon{
+      color: black;
+    }
+  }
+}
 
-
-
-
+.sidebarRow.selected{
+	background-color: lightgrey;
+}
 
 .app__page{
 	display: flex;
