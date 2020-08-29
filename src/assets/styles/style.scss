@@ -1,0 +1,9 @@
+@import './default.scss';
+@import './variables.scss';
+
+div{
+  background-color: $bg-color;
+}
+.app__page{
+	display: flex;
+}
