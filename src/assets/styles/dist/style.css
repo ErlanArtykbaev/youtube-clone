@@ -116,6 +116,21 @@ code {
   width: 30px !important;
 }
 
+.recomended {
+  flex: 0.87;
+  background-color: #f9f9f9;
+  padding: 40px 20px;
+  padding-bottom: 0;
+}
+.recomended h2 {
+  margin-left: 5px;
+  margin-bottom: 20px;
+}
+.recomended .videos {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .app__page {
   display: flex;
 }

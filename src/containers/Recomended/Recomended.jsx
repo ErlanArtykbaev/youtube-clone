@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 
-import './Recomended.css'
 import Video from '../../components/Video'
 import axios from 'axios'
 
@@ -31,7 +30,7 @@ const Recomended = () => {
 	return(
 		<div className='recomended'>
 			<h2>Recomended</h2>
-			<div className='recomended__videos'>
+			<div className='videos'>
 				{
 					recomendedVides.map((vid) => (
 						<Video 
