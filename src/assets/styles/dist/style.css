@@ -91,6 +91,31 @@ code {
   background-color: lightgrey;
 }
 
+.video {
+  width: 370px;
+  margin-bottom: 40px;
+  margin: 10px;
+  transition: 0.2s;
+}
+.video .thumbnail {
+  width: 100%;
+}
+.video .info {
+  display: flex;
+  font-size: 13px;
+  padding: 7px;
+}
+.video:hover {
+  background-color: white;
+}
+.video .text {
+  margin-left: 15px;
+}
+.video .avatar {
+  height: 30px !important;
+  width: 30px !important;
+}
+
 .app__page {
   display: flex;
 }
