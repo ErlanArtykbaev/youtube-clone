@@ -1,7 +1,5 @@
 import React, {useState} from 'react'
 
-import './css/Header.css'
-
 import MenuRoundedIcon from '@material-ui/icons/MenuRounded'
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded'
 import VideoCallRoundedIcon from '@material-ui/icons/VideoCallRounded'
@@ -21,29 +19,29 @@ const Header = (props) => {
 
 	return(
 		<div className='header'>
-			<div className='header__left'>
+			<div className='left'>
 				<MenuRoundedIcon />
 				<NavLink to='/'>
 					<img 
-						className="header__logo"
+						className="logo"
 						src='https://www.pinclipart.com/picdir/big/35-353209_my-music-on-transparent-background-youtube-logo-clipart.png' 
 						alt='icon' />
 				</NavLink>
 			</div>
-			<form onSubmit={handleSubmit} className='header__middle'>
+			<form onSubmit={handleSubmit} className='middle'>
 				<input 
 					onChange={(e) => setInputSearch(e.target.value)} 
 					value={inputSearch}
 					placeholder='Search' 
 					type='text' />
 				<NavLink to={`/search/${inputSearch}`}>
-					<SearchRoundedIcon className='header__search' />
+					<SearchRoundedIcon className='search' />
 				</NavLink>				
 			</form>
-			<div className='header__right'>
-				<VideoCallRoundedIcon className='header__icon' />
-				<AppsRoundedIcon className='header__icon' />
-				<NotificationsRoundedIcon className='header__icon' />
+			<div className='right'>
+				<VideoCallRoundedIcon className='icon' />
+				<AppsRoundedIcon className='icon' />
+				<NotificationsRoundedIcon className='icon' />
 				<AccountCircleRoundedIcon 
 					alt='avatar'/>
 			</div>

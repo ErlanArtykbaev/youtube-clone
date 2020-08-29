@@ -12,8 +12,43 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-div {
-  background-color: lightgrey;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: white;
+}
+.header .logo {
+  height: 25px;
+  object-fit: contain;
+  margin-left: 20px;
+}
+.header .middle {
+  display: flex;
+  width: 40%;
+  align-items: center;
+  border: 1px solid lightgrey;
+}
+.header .middle input {
+  flex: 1;
+  border: none;
+}
+.header .search {
+  width: 50px !important;
+  background-color: #fafafa;
+  border-left: 1px solid lightgrey;
+  color: grey;
+}
+.header .right {
+  display: flex;
+  align-items: center;
+}
+.header .icon {
+  margin-right: 5px;
 }
 
 .app__page {
