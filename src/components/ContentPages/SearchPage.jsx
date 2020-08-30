@@ -2,11 +2,24 @@ import React, {useContext, useEffect} from 'react'
 
 import TuneRoundedIcon from '@material-ui/icons/TuneRounded'
 
-import {VideoContext} from '../../context/VideoContext'
+import {SearchedContext} from '../../context/SearchedContext'
 import Video from '../Video'
 
-const SearchPage = () => {
-	const [searchedVideos, setSearchedVideos] = useContext(VideoContext)
+import axios from '../../apis/youtube'
+
+const SearchPage = ({match}) => {
+	const [searchedVideos, setSearchedVideos] = useContext(SearchedContext)
+
+	useEffect(() => {
+		axios.get('/search', {
+			params: {
+				q: match.params.searchTerm
+			}
+		})
+		.then(res => {
+			setSearchedVideos(res.data.items)
+		})
+	}, [])
 
 	return(
 		<div className='searchPage'>
@@ -16,11 +29,14 @@ const SearchPage = () => {
 			</div>
 			<div className='videos'>
 				{
-					searchedVideos.map((item) => {
-						return <Video 
-							img={item.img}
-						/>
-					})
+					searchedVideos.map((vid) => (
+						<Video 
+							img={vid.snippet.thumbnails.medium.url}
+							key={vid.id}
+							channel={vid.snippet.channelTitle}
+							timestamp={vid.snippet.publishedAt}
+							title={vid.snippet.title} />
+					))
 				}
 			</div>
 		</div>

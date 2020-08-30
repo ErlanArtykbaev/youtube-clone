@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useState} from 'react'
 import { NavLink} from 'react-router-dom'
 
 
@@ -9,25 +9,11 @@ import AppsRoundedIcon from '@material-ui/icons/AppsRounded';
 import NotificationsRoundedIcon from '@material-ui/icons/NotificationsRounded'
 import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded'
 
-import {VideoContext} from '../../context/VideoContext'
 import axios from '../../apis/youtube'
-import { useEffect } from 'react'
 
 const Header = (props) => {
 
-	const [inputSearch, setInputSearch] = useContext(VideoContext)
-	const [searchedVideos, setSearchedVideos] = useContext(VideoContext)
-
-	const handleSubmit = () => {
-		axios.get('/search', {
-			params:{
-				q: inputSearch
-			}
-		})
-		.then(res => {
-			setSearchedVideos(res.data.items)
-		})
-	}
+	const [inputSearch, setInputSearch] = useState('')
 
 	return(
 		<div className='header'>
@@ -40,13 +26,13 @@ const Header = (props) => {
 						alt='icon' />
 				</NavLink>
 			</div>
-			<form onSubmit={handleSubmit} className='middle'>
+			<form className='middle'>
 				<input 
 					onChange={(e) => setInputSearch(e.target.value)} 
 					value={inputSearch}
 					placeholder='Search' 
 					type='text' />
-				<NavLink to={`/search/${inputSearch}`}>
+				<NavLink to={`/search/${inputSearch}`} onClick={e => e.preventDefault()}>
 					<SearchRoundedIcon className='search' />
 				</NavLink>				
 			</form>

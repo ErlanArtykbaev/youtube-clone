@@ -6,31 +6,32 @@ import Sidebar from './components/Menus/Sidebar'
 import Recomended from './components/ContentPages/Recomended'
 import SearchPage from './components/ContentPages/SearchPage'
 
-import { VideoProvider} from './context/VideoContext'
+import { RecomendedProvider} from './context/RecomendedContext'
+import { SearchedProvider } from './context/SearchedContext'
 
 const App = () => {
 
   return (
-		<VideoProvider>
-			<div className="App">
-				<Router>
-					<Header />
-					<div className='app__page'>
-						<Sidebar />
-						<Switch>
-							<Route path='/' exact>
+		<div className="App">
+			<Router>
+				<Header />
+				<div className='app__page'>
+					<Sidebar />
+					<Switch>
+						<Route path='/' exact>
+							<RecomendedProvider>
 								<Recomended />
-							</Route>
-
-							<Route path='/search/:searchTerm'>
+							</RecomendedProvider>
+						</Route>
+						<Route path='/search/:searchTerm'>
+							<SearchedProvider>
 								<SearchPage />
-							</Route>
-
-						</Switch>
-					</div>
-				</Router>
-			</div>
-		</VideoProvider>
+							</SearchedProvider>
+						</Route>
+					</Switch>
+				</div>
+			</Router>
+		</div>
   )
 }
 

@@ -3,11 +3,11 @@ import axios from 'axios'
 
 import Video from '../../components/Video'
 
-import {VideoContext} from '../../context/VideoContext'
+import {RecomendedContext} from '../../context/RecomendedContext'
 // import axios from '../../apis/youtube'
 
 const Recomended = () => {
-	const [recomendedVideos, setRecomendedVideos] = useContext(VideoContext)
+	const [recomendedVideos, setRecomendedVideos] = useContext(RecomendedContext)
 
 	const KEY = 'AIzaSyBP5CI4iNzJI7S0qn6aE_8Cwr3B-7qOmbU'
 
