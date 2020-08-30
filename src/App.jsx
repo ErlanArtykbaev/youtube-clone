@@ -1,9 +1,10 @@
 import React from 'react'
-import Header from './components/Header'
-import Sidebar from './components/Sidebar'
-import Recomended from './containers/Recomended/Recomended'
-import SearchPage from './containers/SearchPage/SearchPage'
-import { Switch, Route, BrowserRouter} from 'react-router-dom'
+import { Switch, Route, BrowserRouter as Router} from 'react-router-dom'
+
+import Header from './components/Menus/Header'
+import Sidebar from './components/Menus/Sidebar'
+import Recomended from './components/ContentPages/Recomended'
+import SearchPage from './components/ContentPages/SearchPage'
 
 import { VideoProvider} from './context/VideoContext'
 
@@ -12,26 +13,22 @@ const App = () => {
   return (
 		<VideoProvider>
 			<div className="App">
-				<BrowserRouter>
+				<Router>
 					<Header />
-					<Switch>
-
-						<Route path='/' exact>
-							<div className='app__page'>
-								<Sidebar />
+					<div className='app__page'>
+						<Sidebar />
+						<Switch>
+							<Route path='/' exact>
 								<Recomended />
-							</div>	
-						</Route>
+							</Route>
 
-						<Route path='/search/:searchTerm'>
-							<div className='app__page'>
-								<Sidebar />
+							<Route path='/search/:searchTerm'>
 								<SearchPage />
-							</div>	
-						</Route>
+							</Route>
 
-					</Switch>
-				</BrowserRouter>
+						</Switch>
+					</div>
+				</Router>
 			</div>
 		</VideoProvider>
   )

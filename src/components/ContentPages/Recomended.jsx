@@ -1,14 +1,17 @@
-import React, {useState, useEffect} from 'react'
-
-import Video from '../../components/Video'
+import React, {useEffect, useContext} from 'react'
 import axios from 'axios'
 
+import Video from '../../components/Video'
+
+import {VideoContext} from '../../context/VideoContext'
+// import axios from '../../apis/youtube'
+
 const Recomended = () => {
-	const [recomendedVides, setRecomendedVideos] = useState([])
+	const [recomendedVideos, setRecomendedVideos] = useContext(VideoContext)
 
 	const KEY = 'AIzaSyBP5CI4iNzJI7S0qn6aE_8Cwr3B-7qOmbU'
 
-	const getResponse = () => {
+	useEffect(() => {
 		axios.get('https://www.googleapis.com/youtube/v3/videos', {
 			params:{
 				chart: 'mostPopular',
@@ -18,21 +21,16 @@ const Recomended = () => {
 			}
 		})
 		.then(res => {
-			console.log(res.data.items)
 			setRecomendedVideos(res.data.items)
 		})
-	}
-
-	useEffect(() => {
-		getResponse()
-}, [])
+	},[])
 
 	return(
 		<div className='recomended'>
 			<h2>Recomended</h2>
 			<div className='videos'>
 				{
-					recomendedVides.map((vid) => (
+					recomendedVideos.map((vid) => (
 						<Video 
 							img={vid.snippet.thumbnails.medium.url}
 							key={vid.id}

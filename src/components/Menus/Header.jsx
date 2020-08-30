@@ -1,4 +1,6 @@
-import React, {useState} from 'react'
+import React, {useContext} from 'react'
+import { NavLink} from 'react-router-dom'
+
 
 import MenuRoundedIcon from '@material-ui/icons/MenuRounded'
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded'
@@ -6,15 +8,25 @@ import VideoCallRoundedIcon from '@material-ui/icons/VideoCallRounded'
 import AppsRoundedIcon from '@material-ui/icons/AppsRounded';
 import NotificationsRoundedIcon from '@material-ui/icons/NotificationsRounded'
 import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded'
-import { NavLink} from 'react-router-dom'
+
+import {VideoContext} from '../../context/VideoContext'
+import axios from '../../apis/youtube'
+import { useEffect } from 'react'
 
 const Header = (props) => {
 
-	const [inputSearch, setInputSearch] = useState('')
+	const [inputSearch, setInputSearch] = useContext(VideoContext)
+	const [searchedVideos, setSearchedVideos] = useContext(VideoContext)
 
-	const handleSubmit = (event) => {
-		event.preventDefault()
-		props.handleFormSearch(inputSearch)
+	const handleSubmit = () => {
+		axios.get('/search', {
+			params:{
+				q: inputSearch
+			}
+		})
+		.then(res => {
+			setSearchedVideos(res.data.items)
+		})
 	}
 
 	return(

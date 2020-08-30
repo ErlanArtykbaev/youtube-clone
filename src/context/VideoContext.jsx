@@ -5,14 +5,17 @@ export const VideoContext = createContext()
 export const VideoProvider = (props) => {
 	const [recomendedVideos, setRecomendedVideos] = useState([])
 	const [searchedVideos, setSearchedVideos] = useState([])
-	const [searchVideo, setSearchVideo] = useState('')
-
-	const searchVideoMeth = (textSearch) => {
-		setSearchVideo(textSearch)
-	}
-
+	const [inputSearch, setInputSearch] = useState('')
+	
 	return(
-		<VideoContext.Provider>
+		<VideoContext.Provider value={[
+			recomendedVideos, 
+			setRecomendedVideos, 
+			inputSearch, 
+			setInputSearch, 
+			searchedVideos, 
+			setSearchedVideos]}>
+			
 			{props.children}
 		</VideoContext.Provider>
 	)
