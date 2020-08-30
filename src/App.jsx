@@ -14,7 +14,9 @@ const App = () => {
   return (
 		<div className="App">
 			<Router>
-				<Header />
+				<SearchedProvider>
+					<Header />
+				</SearchedProvider>
 				<div className='app__page'>
 					<Sidebar />
 					<Switch>

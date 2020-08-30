@@ -10,17 +10,6 @@ import axios from '../../apis/youtube'
 const SearchPage = ({match}) => {
 	const [searchedVideos, setSearchedVideos] = useContext(SearchedContext)
 
-	useEffect(() => {
-		axios.get('/search', {
-			params: {
-				q: match.params.searchTerm
-			}
-		})
-		.then(res => {
-			setSearchedVideos(res.data.items)
-		})
-	}, [])
-
 	return(
 		<div className='searchPage'>
 			<div className='filter'>

@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { NavLink} from 'react-router-dom'
-
+import youtubeAPI from 'youtube-api-search'
 
 import MenuRoundedIcon from '@material-ui/icons/MenuRounded'
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded'
@@ -9,11 +9,34 @@ import AppsRoundedIcon from '@material-ui/icons/AppsRounded';
 import NotificationsRoundedIcon from '@material-ui/icons/NotificationsRounded'
 import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded'
 
+import {SearchedContext} from '../../context/SearchedContext'
+
 import axios from '../../apis/youtube'
 
 const Header = (props) => {
 
+	const KEY = 'AIzaSyBP5CI4iNzJI7S0qn6aE_8Cwr3B-7qOmbU'
+
+	const url = 'https://www.googleapis.com/youtube/v3/search'
 	const [inputSearch, setInputSearch] = useState('')
+	const [searchedVideos, setSearchedVideos] = useContext(SearchedContext)
+
+	const handleSubmit = (e) => {
+		e.preventDefault()
+		youtubeAPI({key: KEY, term: inputSearch}, videos => {
+			setSearchedVideos(videos)
+		})
+		// axios.get('/search', {
+		// 	params:{
+		// 		q: inputSearch
+		// 	}
+		// })
+		// .then(res => {
+		// 	vid = res.data.items
+		// })
+		// .catch(err => console.log(err))
+		// setSearchedVideos(vid)
+	}
 
 	return(
 		<div className='header'>
@@ -26,7 +49,7 @@ const Header = (props) => {
 						alt='icon' />
 				</NavLink>
 			</div>
-			<form className='middle'>
+			<form onSubmit={handleSubmit} className='middle'>
 				<input 
 					onChange={(e) => setInputSearch(e.target.value)} 
 					value={inputSearch}

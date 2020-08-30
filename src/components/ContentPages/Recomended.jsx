@@ -23,6 +23,7 @@ const Recomended = () => {
 		.then(res => {
 			setRecomendedVideos(res.data.items)
 		})
+		.catch(err => console.log(err))
 	},[])
 
 	return(
