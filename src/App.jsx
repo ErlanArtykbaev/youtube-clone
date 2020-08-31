@@ -5,9 +5,11 @@ import Header from './components/Menus/Header'
 import Sidebar from './components/Menus/Sidebar'
 import Recomended from './components/ContentPages/Recomended'
 import SearchPage from './components/ContentPages/SearchPage'
+import ViewVideo from './components/ContentPages/ViewVideo'
 
 import { RecomendedProvider} from './context/RecomendedContext'
 import { SearchedProvider } from './context/SearchedContext'
+import {ViewVideoProvider} from './context/ViewVideoContext'
 
 const App = () => {
 
@@ -29,6 +31,11 @@ const App = () => {
 							<SearchedProvider>
 								<SearchPage />
 							</SearchedProvider>
+						</Route>
+						<Route path='/view/:id'>
+							<ViewVideoProvider>
+								<ViewVideo />
+							</ViewVideoProvider>
 						</Route>
 					</Switch>
 				</div>

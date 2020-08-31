@@ -4,10 +4,12 @@ import axios from 'axios'
 import Video from '../../components/Video'
 
 import {RecomendedContext} from '../../context/RecomendedContext'
+import {ViewVideoContext} from '../../context/ViewVideoContext'
 // import axios from '../../apis/youtube'
 
 const Recomended = () => {
 	const [recomendedVideos, setRecomendedVideos] = useContext(RecomendedContext)
+	const [viewVideo, setViewVideo] = useContext(ViewVideoContext)
 
 	const KEY = 'AIzaSyBP5CI4iNzJI7S0qn6aE_8Cwr3B-7qOmbU'
 
@@ -35,6 +37,7 @@ const Recomended = () => {
 						<Video 
 							img={vid.snippet.thumbnails.medium.url}
 							key={vid.id}
+							vidId={vid.id}
 							channel={vid.snippet.channelTitle}
 							timestamp={vid.snippet.publishedAt}
 							title={vid.snippet.title} />

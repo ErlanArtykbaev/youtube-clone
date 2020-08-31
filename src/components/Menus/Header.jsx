@@ -17,7 +17,6 @@ const Header = (props) => {
 
 	const KEY = 'AIzaSyBP5CI4iNzJI7S0qn6aE_8Cwr3B-7qOmbU'
 
-	const url = 'https://www.googleapis.com/youtube/v3/search'
 	const [inputSearch, setInputSearch] = useState('')
 	const [searchedVideos, setSearchedVideos] = useContext(SearchedContext)
 
