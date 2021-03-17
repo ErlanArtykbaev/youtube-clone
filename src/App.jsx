@@ -27,12 +27,12 @@ const App = () => {
 								<Recomended />
 							</RecomendedProvider>
 						</Route>
-						<Route path='/search/:searchTerm'>
+						<Route exact path='/search/:searchTerm'>
 							<SearchedProvider>
 								<SearchPage />
 							</SearchedProvider>
 						</Route>
-						<Route path='/view/:id'>
+						<Route exact path='/view/:id'>
 							<ViewVideoProvider>
 								<ViewVideo />
 							</ViewVideoProvider>

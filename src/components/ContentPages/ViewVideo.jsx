@@ -1,9 +1,21 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 const ViewVideo = (props) => {
+  const [videoUrl, setVideoUrl] = useState('')
+
+  useEffect(() => {
+    console.log(props)
+  },[])
+
   return (
-    <div>
-      there is the video
+    <div className='viewVideo'>
+      <div className='video'>
+
+        {videoUrl}
+      </div>
+      <div className="recomended">
+
+      </div>
     </div>
   );
 }

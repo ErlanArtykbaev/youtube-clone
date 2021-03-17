@@ -9,7 +9,7 @@ export const RecomendedProvider = (props) => {
 		<RecomendedContext.Provider value={[
 			recomendedVideos, 
 			setRecomendedVideos
-			]}>
+		]}>
 			
 			{props.children}
 		</RecomendedContext.Provider>

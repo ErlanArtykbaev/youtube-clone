@@ -1,8 +1,8 @@
 import React, {createContext, useState} from 'react'
 
-const ViewVideoContext = createContext()
+export const ViewVideoContext = createContext()
 
-const ViewVideoProvider = (props) => {
+export const ViewVideoProvider = (props) => {
   const [viewVideo, setViewVideo] = useState('')
   
   return(

@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 const Video = (props) => {
 	return(
 		<div className='video'> 
-			<Link to={`/view/${props.vidId}`}>
+			<Link to={`/view/${props.url}`}>
 				<img className='thumbnail' src={props.img} alt={props.title} />
 			</Link>
 			<div className='info'>
